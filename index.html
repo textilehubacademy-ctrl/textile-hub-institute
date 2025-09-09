@@ -7,93 +7,154 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e0f7ff, #ffffff);
-      color: #222;
-      text-align: center;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e6f7ff, #ffffff);
+      color: #333;
+      overflow-x: hidden;
     }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      0% {opacity: 0; transform: translateY(-50px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeUp {
+      0% {opacity: 0; transform: translateY(50px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 15px #00c6ff, 0 0 30px #00c6ff;}
+      50% { box-shadow: 0 0 25px #007acc, 0 0 50px #00c6ff;}
+    }
+
     header {
-      padding: 40px 20px;
-      background: linear-gradient(135deg, #007acc, #00c6ff);
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(to right, #007acc, #00c6ff);
       color: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
       border-bottom-left-radius: 40px;
       border-bottom-right-radius: 40px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      animation: fadeInDown 1s ease-out;
     }
-    h1 {
-      font-size: 2.8rem;
-      margin: 0;
+
+    header img {
+      height: 100px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease, filter 0.3s ease;
     }
+    header img:hover {
+      transform: scale(1.1);
+      filter: drop-shadow(0px 0px 15px rgba(255,255,255,0.9));
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 10px 0;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: fadeUp 1.2s ease-out;
+    }
+
     h2 {
-      color: #007acc;
-      margin-top: 40px;
       font-size: 2rem;
+      color: #007acc;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px rgba(0, 198, 255, 0.6);
     }
-    section {
-      padding: 30px;
-    }
+
     table {
-      margin: 0 auto;
+      width: 100%;
       border-collapse: collapse;
-      width: 80%;
-      background: rgba(255,255,255,0.7);
-      border-radius: 15px;
+      margin-bottom: 30px;
       overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0, 122, 204, 0.3);
+      border-radius: 15px;
     }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
     th, td {
-      border: 1px solid #bde0ff;
       padding: 12px;
-      font-size: 1rem;
+      text-align: center;
+      transition: background 0.3s ease;
     }
+
     th {
       background: #007acc;
-      color: #fff;
+      color: white;
     }
-    td {
-      color: #222;
+
+    tr:nth-child(even) {
+      background: #f2f9ff;
     }
-    iframe {
-      margin-top: 20px;
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0, 122, 204, 0.3);
+
+    tr:hover td {
+      background: #d9f0ff;
     }
+
     .btn {
       display: inline-block;
-      margin-top: 20px;
       padding: 12px 25px;
+      margin-top: 20px;
+      font-size: 1rem;
+      color: white;
       background: #007acc;
-      color: #fff;
-      font-size: 18px;
-      font-weight: bold;
-      text-decoration: none;
+      border: none;
       border-radius: 30px;
-      transition: 0.3s;
-      box-shadow: 0 6px 15px rgba(0,122,204,0.4);
+      cursor: pointer;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+      transition: transform 0.3s ease;
     }
+
     .btn:hover {
       background: #00c6ff;
-      box-shadow: 0 8px 20px rgba(0,198,255,0.6);
+      transform: scale(1.05);
     }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
     footer {
-      background: #f1f9ff;
-      padding: 20px;
       margin-top: 40px;
-      font-size: 14px;
-      color: #444;
-      border-top: 2px solid #bde0ff;
+      padding: 20px;
+      text-align: center;
+      background: #007acc;
+      color: white;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+      animation: fadeUp 1.5s ease-out;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Welcome to Textile Hub Institute</h1>
+    <img src="logo.png" alt="Textile Hub Institute Logo">
+    <h1>Textile Hub Institute</h1>
     <p>Learn Textile Designing with Professional Courses</p>
   </header>
 
-  <section>
+  <div class="container">
     <h2>Our Courses</h2>
     <table>
       <tr>
@@ -125,34 +186,20 @@
         <td>Yes</td>
       </tr>
     </table>
-  </section>
 
-  <section>
+    <a href="#form" class="btn">Apply for Admission</a>
+  </div>
+
+  <div class="container" id="form">
     <h2>Admission Form</h2>
-    <p>Please fill the form below to apply:</p>
-
-    <!-- Google Form Embed -->
-    <iframe 
-      src="https://docs.google.com/forms/d/e/1FAIpQLSe5LAPfW8NkxOsmIJ0RfNPDnJfT-oXNayuXlr05yw3rDX4NJQ/viewform?embedded=true"
-      width="700" 
-      height="520" 
-      frameborder="0" 
-      marginheight="0" 
-      marginwidth="0">
-    Loading…
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe5LAPfW8NkxOsmIJ0RfNPDnJfT-oXNayuXlr05yw3rDX4NJQ/viewform?embedded=true">
+      Loading…
     </iframe>
-  </section>
-
-  <section>
-    <h2>Contact Us</h2>
-    <p>Email: <strong>textilehubacademy@gmail.com</strong></p>
-    <p>Phone: <strong>0335-9219888</strong></p>
-  </section>
+  </div>
 
   <footer>
+    <p>Email: textilehubacademy@gmail.com | Phone: 0335-9219888</p>
     <p>&copy; 2025 Textile Hub Institute. All Rights Reserved.</p>
   </footer>
-
 </body>
 </html>
-
